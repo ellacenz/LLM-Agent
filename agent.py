@@ -1,11 +1,15 @@
+
 from textwrap import dedent
 
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 
+from fastapi import FastAPI
+
 from db import query, execute
 from agno.models.google import Gemini
 
+app = FastAPI()
 
 agent = Agent(
     model=Gemini(id="gemini-2.0-flash-001"),
