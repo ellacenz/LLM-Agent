@@ -2,16 +2,27 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from agent import agent
+from fastapi.middleware.cors import CORSMiddleware
 
+
+# Load environment variables from .env file
 load_dotenv()
 
 app = FastAPI();
 
-# Define request schema
+# Allow cross-origin requests (important for frontend)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 class QuestionRequest(BaseModel):
     question: str
 
-# Define response schema
 class AnswerResponse(BaseModel):
     response: str
 
