@@ -1,3 +1,4 @@
+
 from textwrap import dedent
 
 from agno.agent import Agent
@@ -5,6 +6,7 @@ from agno.models.openai import OpenAIChat
 
 from db import query, execute
 from agno.models.google import Gemini
+
 
 
 agent = Agent(
